@@ -1,4 +1,31 @@
 " use strict ";
+class Pet {
+  constructor(name){
+    this.name = name;
+  }
+  get name(){ return this.name};
+  set name(name){this.name = name};
+  function speak (){};
+}
+
+class Cat extends Pet {
+  function speak() {
+    return "Meow!"
+  }
+}
+
+class Dog extends Pet {
+  function speak() {
+    return "Woof Woof!"
+  }
+}
+
+class Bird extends Pet {
+  function speak() {
+    return "Tweet Tweet Motherfucker!"
+  }
+}
+
 
 function PetChat(){
   var display = document.getElementById("display");
@@ -8,12 +35,23 @@ function PetChat(){
     return prompt("How many pets do you have?");
   };
 
+  var pet = new Pet();
+
   var askPetInfo = function(){
     for(var i=0; i<numPets; i++){
       var type = prompt("What is pet #" + (i+1) + "? (cat, dog, bird)");
       var name = prompt("What is pet #" + (i+1) + "'s name'?");
-      var textOut = type + " " + name + "<br />";
-      display.innerHTML += textOut;
+      if type === "cat"{
+        pet = new Cat(name);
+      }
+      if type === "dog"{
+        pet = new Dog(name);
+      }
+      if type === "bird" {}
+        pet = new bird(name);
+      }
+      //var textOut = type + " " + name + "<br />";
+      display.innerHTML += pet + pet.speak();
     }
   };
 
