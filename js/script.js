@@ -1,27 +1,28 @@
-" use strict ";
+'use strict';
 class Pet {
+  //var name;
   constructor(name){
     this.name = name;
   }
-  get name(){ return this.name};
-  set name(name){this.name = name};
-  function speak (){};
+  //get name(){ return this.name;}
+  //set name(name){this.name = name;}
+  speak (){}
 }
 
 class Cat extends Pet {
-  function speak() {
+  speak(){
     return "Meow!"
   }
 }
 
 class Dog extends Pet {
-  function speak() {
+   speak() {
     return "Woof Woof!"
   }
 }
 
 class Bird extends Pet {
-  function speak() {
+  speak() {
     return "Tweet Tweet Motherfucker!"
   }
 }
@@ -33,7 +34,7 @@ function PetChat(){
 
   var askHowMany = function(){
     return prompt("How many pets do you have?");
-  };
+  }
 
   var pet = new Pet();
 
@@ -41,28 +42,32 @@ function PetChat(){
     for(var i=0; i<numPets; i++){
       var type = prompt("What is pet #" + (i+1) + "? (cat, dog, bird)");
       var name = prompt("What is pet #" + (i+1) + "'s name'?");
-      if type === "cat"{
+      if (type === "cat"){
         pet = new Cat(name);
       }
-      if type === "dog"{
+      else if(type === "dog"){
         pet = new Dog(name);
       }
-      if type === "bird" {}
-        pet = new bird(name);
+      else if(type === "bird") {
+        pet = new Bird(name);
+      }
+
+      display.innerHTML += type + " " + pet.name + " " + pet.speak() +"<br />";
+
       }
       //var textOut = type + " " + name + "<br />";
-      display.innerHTML += pet + pet.speak();
     }
-  };
+
 
   this.init = function(){
+    console.log("hello");
     while(numPets === null){
       numPets = askHowMany();
     }
 
     askPetInfo();
   }
-};
+}
 
 var chat = new PetChat();
 chat.init();
