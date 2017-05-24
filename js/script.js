@@ -28,3 +28,62 @@ function PetChat(){
 
 var chat = new PetChat();
 chat.init();
+
+ class Pet
+{
+  constructor(name){
+    this.name = name;
+  }
+
+  get Name(){
+    return this.name;
+  }
+
+  set Name(name){
+    this.name = name;
+  }
+  speak()
+  {
+    console.log('rrrrrrrr');
+  }
+
+}
+
+class Dog extends Pet
+{
+  constructor(name)
+  {
+    super this.name;
+  }
+
+  speak()
+  {
+    console.log('bark');
+  }
+}
+
+class Cat extends Pet
+{
+  constructor(name)
+  {
+    super this.name;
+  }
+
+  speak()
+  {
+    console.log('meow');
+  }
+}
+
+class Snake extends Pet
+{
+  constructor(name)
+  {
+    super this.name;
+  }
+
+  speak()
+  {
+    console.log("ssssssssss");
+  }
+}
