@@ -4,16 +4,18 @@ var display = document.getElementById("display");
 var numPets;
 var species;
 var nameOfPet;
-var doggie;
-var pet;
-var kitty;
-var ferret;
+var petListString = "";
 
 class Pet {
-  constructor(name, species) {
-    this.name = name;
+  constructor(species) {
     this.species = species;
     this.noise = "default noise";
+  }
+  setName(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
   }
   speak() {
     return "Your " + this.species + ", " + this. name + ", says \"" + this.noise + ".\"";
@@ -21,8 +23,8 @@ class Pet {
 }
 
 class Dog extends Pet {
-  constructor(name) {
-    super(name, "Dog");
+  constructor() {
+    super("Dog");
     this.noise = "Grrrrrr!";
   }
   speak() {
@@ -51,11 +53,37 @@ class Ferret extends Pet {
 }
 
 function getNumberOfPets() {
-  doggie = new Dog("Killer");
-  pet = new Pet("Default name", "Default pet type");
-  kitty = new Cat("Mauler");
-  ferret = new Ferret("Andromeda");
-  return pet.speak() + "<br/>" + doggie.speak() + "<br/>" + kitty.speak() + "<br/>" + ferret.speak();
+  numPets = prompt("How many pets do you have in your menagerie?");
+  var menagerie = [];
+  for (var i = 0; i < numPets; i++) {
+    species = prompt("What is the species of your pet?");
+    if ((species == "Dog") || (species == "dog")) {
+      menagerie[i] = new Dog();
+      nameOfPet = prompt("What is the dog's name?");
+      menagerie[i].setName(nameOfPet);
+    }
+    else if ((species == "Cat") || (species == "cat")) {
+      menagerie[i] = new Cat();
+      nameOfPet = prompt("What is the cat's name?");
+      menagerie[i].setName(nameOfPet);
+    }
+    else if ((species == "Ferret") || (species == "ferret")) {
+      menagerie[i] = new Ferret();
+      nameOfPet = prompt("What is the ferret's name?");
+      menagerie[i].setName(nameOfPet);
+    }
+    else {
+      menagerie[i] = new Pet(species);
+      nameOfPet = prompt("What is your " + species + "'s name?");
+      menagerie[i].setName(nameOfPet);
+    }
+  }
+
+
+  for (var i = 0; i < menagerie.length; i++) {
+    petListString += menagerie[i].speak() + "<br/>";
+  }
+  return petListString;
 }
-var noise = getNumberOfPets();
-display.innerHTML = noise;
+
+display.innerHTML = getNumberOfPets();
