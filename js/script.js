@@ -52,13 +52,16 @@ function listPets() {
 
 
 function getPets() {
-    var pets = getPetTypes();
-    
+    var petTypes = getPetTypes();
+    getPetNames(petTypes);
+}
+
+function getPetNames(pets) {
     pets.forEach(function(pet) {
         pet.name = prompt("What is " + pet.constructor.name + "'s name?");
     })
     return pets;
-}
+} 
 
 function getPetTypes() {
     var numPets = getnumPets();
