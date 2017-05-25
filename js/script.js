@@ -1,7 +1,5 @@
 " use strict ";
 
-
-
 class Pet {
 
     constructor(petName, petType) {
@@ -20,7 +18,6 @@ class Dog extends Pet {
     speak() {
         super.speak();
         return "*Ruff*";
-
     }
 }
 
@@ -31,7 +28,6 @@ class Cat extends Pet {
     speak() {
         super.speak();
         return "*Meow*";
-
     }
 }
 
