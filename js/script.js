@@ -1,33 +1,5 @@
 " use strict ";
 
-function PetChat(){
-  var display = document.getElementById("display");
-  var numPets = null;
-
-  var askHowMany = function(){
-    return prompt("How many pets do you have?");
-  };
-
-  var askPetInfo = function(){
-    for(var i=0; i<numPets; i++){
-      var type = prompt("What is pet #" + (i+1) + "? (cat, dog, bird)");
-      var name = prompt("What is pet #" + (i+1) + "'s name'?");
-      var textOut = type + " " + name + "<br />";
-      display.innerHTML += textOut;
-    }
-  };
-
-  this.init = function(){
-    while(numPets === null){
-      numPets = askHowMany();
-    }
-
-    askPetInfo();
-  }
-};
-
-var chat = new PetChat();
-chat.init();
 
  class Pet
 {
@@ -45,45 +17,86 @@ chat.init();
   speak()
   {
     console.log('rrrrrrrr');
+	  return "rrrrr";
   }
 
 }
 
 class Dog extends Pet
 {
-  constructor(name)
-  {
-    super this.name;
-  }
-
   speak()
   {
     console.log('bark');
+	  return "bark";
   }
 }
 
 class Cat extends Pet
 {
-  constructor(name)
-  {
-    super this.name;
-  }
-
   speak()
   {
     console.log('meow');
+	  return "meow";
   }
 }
 
-class Snake extends Pet
+class Bird extends Pet
 {
-  constructor(name)
-  {
-    super this.name;
-  }
-
   speak()
   {
-    console.log("ssssssssss");
+    console.log("chirp");
+	  return "chirp";
   }
 }
+
+
+function PetChat(){
+  var display = document.getElementById("display");
+  var numPets = null;
+
+  var askHowMany = function(){
+    return prompt("How many pets do you have?");
+  };
+
+  var askPetInfo = function(){
+	  var petList = new Array();
+	  var myPet;
+    for(var i=0; i<numPets; i++){
+      var type = prompt("What is pet #" + (i+1) + "? (cat, dog, bird)");
+      var name = prompt("What is pet #" + (i+1) + "'s name'?");
+		if(type === "cat")
+		{
+			 myPet = new Cat(name);
+			petList.push(myPet);
+		}
+		else if(type === "dog")
+		{
+			myPet = new Dog(name);
+			petList.push(myPet);
+		}
+		else if(type === "bird")
+		{
+			  myPet = new Bird(name);
+			petList.push(myPet);
+		}
+		
+      var textOut = petList[i].name + " " + petList[i].speak() + "<br />";
+      display.innerHTML += textOut;
+    }
+  };
+	
+
+
+  this.init = function(){
+    while(numPets === null){
+      numPets = askHowMany();
+    }
+
+    askPetInfo();
+  }
+};
+
+var chat = new PetChat();
+chat.init();
+
+
