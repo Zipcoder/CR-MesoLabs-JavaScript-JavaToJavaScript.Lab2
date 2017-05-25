@@ -4,6 +4,12 @@ class Pet {
   constructor(name) {
     this.name = name;
   }
+  getName() {
+    return this.name;
+  }
+  setName(name) {
+    this.name = name;
+  }
   speak() {}
 }
 
@@ -48,15 +54,15 @@ function PetChat(){
       var name = prompt("What is pet #" + (i+1) + "'s name'?");
       if (type == "dog") {
         var dog = new Dog(name);
-        var textOut = dog.name + " the " + type + " says " + dog.speak() + "<br />";
+        var textOut = dog.getName() + " the " + type + " says " + dog.speak() + "<br />";
       }
       else if (type == "cat") {
         var cat = new Cat(name);
-        var textOut = cat.name + " the " + type + " says " + cat.speak() + "<br />";
+        var textOut = cat.getName() + " the " + type + " says " + cat.speak() + "<br />";
       }
       else {
         var bird = new Bird(name);
-        var textOut = bird.name + " the " + type + " says " + bird.speak() + "<br />";
+        var textOut = bird.getName() + " the " + type + " says " + bird.speak() + "<br />";
       }
       display.innerHTML += textOut;
     }
