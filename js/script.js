@@ -46,27 +46,18 @@ class Pets {
 }
 
 class Dogs extends Pets{
-  constructor(name){
-    super(name);
-  }
   speak(){
     return "Woof! Woof!";
   }
 }
 
 class Cats extends Pets{
-  constructor(name){
-    super(name);
-  }
   speak(){
     return "Meaooo~~!";
   }
 }
 
 class Birds extends Pets{
-  constructor(name){
-    super(name);
-  }
   speak(){
     return "What are you looking at!?";
   }
