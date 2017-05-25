@@ -1,6 +1,5 @@
 " use strict ";
 
-
  class Pet
 {
   constructor(name){
@@ -98,5 +97,3 @@ function PetChat(){
 
 var chat = new PetChat();
 chat.init();
-
-
